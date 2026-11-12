@@ -1,8 +1,5 @@
-
 from drafter import *
 from dataclasses import dataclass
-
-
 
 hide_debug_information()
 set_website_title("Alternative Archive")
