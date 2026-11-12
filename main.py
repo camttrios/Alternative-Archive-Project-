@@ -172,7 +172,8 @@ initial_songs = [
     Song("Rooster","Alice In Chains","Self-Discovery","Dark", "Grunge"),
     Song("Only Shallow", "My Bloody Valentine", "Loss", "Upbeat", "Shoegaze"),
     Song("Sweetness", "Jimmy Eat World", "Desperation", "Upbeat", "Emotional Hardcore"),
-    Song("Alison", "Slowdive", "Desperation", "Slow", "Shoegaze")
+    Song("Alison", "Slowdive", "Desperation", "Slow", "Shoegaze"),
+    Song("Dance, Dance", "Fall Out Boy", "Desperation", "Upbeat", "Pop Punk")
 ]
 
 
