@@ -6,6 +6,15 @@ set_website_title("Alternative Archive")
 set_website_framed(False)
 
 @dataclass
+class Song:
+    name: str
+    artist:str
+    theme:str
+    mood: str
+    genre: str
+    
+
+@dataclass
 class State:
     library: list[Song]
     search_theme: str
@@ -13,14 +22,6 @@ class State:
     search_genre:str
     result_message:str
     submission_message:str
-    
-@dataclass
-class Song:
-    name: str
-    artist:str
-    theme:str
-    mood: str
-    genre: str
     
     
 @route
