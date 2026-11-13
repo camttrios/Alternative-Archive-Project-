@@ -1,6 +1,7 @@
 from drafter import *
 import random
 from dataclasses import dataclass
+from bakery import assert_equal
 
 set_website_title("Alternative Archive")
 set_site_information(
@@ -316,3 +317,15 @@ initial_state = State(
 
 if __name__ == "__main__":
     start_server(initial_state)
+
+#unit tests
+test_state = State(
+    library = [Song("Vampires Will Never Hurt You", "My Chemical Romance", "Isolation", "Angsty", "Pop Punk"), Song("Pretty Punk", "Fall Out Boy", "Romance", "Upbeat", "Pop Punk")],
+    search_theme="",
+    search_mood="",
+    search_genre="",
+    result_message="Find Your Song!",
+    submission_message=""
+    )
+perform_search(test_state, "Isolation","Angsty", "Pop Punk")
+assert_equal(
