@@ -320,12 +320,89 @@ if __name__ == "__main__":
 
 #unit tests
 test_state = State(
-    library = [Song("Vampires Will Never Hurt You", "My Chemical Romance", "Isolation", "Angsty", "Pop Punk"), Song("Pretty Punk", "Fall Out Boy", "Romance", "Upbeat", "Pop Punk")],
+    library = [Song("Vampires Will Never Hurt You", "My Chemical Romance", "Isolation", "Angsty", "Pop Punk"), Song("Pretty in Punk", "Fall Out Boy", "Romance", "Upbeat", "Pop Punk")],
     search_theme="",
     search_mood="",
     search_genre="",
     result_message="Find Your Song!",
     submission_message=""
     )
+
+#unit testing perfotm_search
 perform_search(test_state, "Isolation","Angsty", "Pop Punk")
-assert_equal(
+assert_equal(test_state.search_theme, "Isolation")
+assert_equal(test_state.search_mood, "Angsty")
+assert_equal(test_state.search_genre, "Pop Punk")
+assert_equal(test_state.result_message, "Vampires Will Never Hurt You by My Chemical Romance")
+
+#unit testing result function
+test_state = State(
+    library = [ Song("Pretty in Punk", "Fall Out Boy", "Romance", "Upbeat", "Pop Punk")],
+    search_theme="Isolation",
+    search_mood="Angsty",
+    search_genre="Pop Punk",
+    result_message="",
+    submission_message=""
+    )
+
+result(test_state)
+assert_equal(test_state.result_message, "No matching songs found.")
+
+test_state = State(
+    library = [ Song("Pretty in Punk", "Fall Out Boy", "Romance", "Upbeat", "Pop Punk")],
+    search_theme="Romance",
+    search_mood="Upbeat",
+    search_genre="Pop Punk",
+    result_message="",
+    submission_message=""
+    )
+
+result(test_state)
+assert_equal(test_state.result_message, "Pretty in Punk by Fall Out Boy")
+
+#unit testing add_song
+
+test_state = State(
+    library = [],
+    search_theme="",
+    search_mood="",
+    search_genre="",
+    result_message="Find Your Song!",
+    submission_message=""
+    )
+
+add_song(test_state, "ACES", "Fall Out Boy",
+         "Appreciation", "Upbeat", "Pop Punk")
+
+assert_equal(len(test_state.library), 1)
+assert_equal(test_state.library[0].name, "ACES")
+assert_equal(test_state.library[0].artist, "Fall Out Boy")
+assert_equal(test_state.submission_message,
+             "Song successfully added to the archive!")
+
+add_song(test_state, "", "Fall Out Boy",
+         "Appreciation", "Upbeat", "Pop Punk")
+
+assert_equal(len(test_state.library), 1)
+assert_equal(test_state.submission_message,
+             "Please fill in all required fields.")
+
+#unit testing pages 
+test_state = State(
+    library = [],
+    search_theme="",
+    search_mood="",
+    search_genre="",
+    result_message="Find Your Song!",
+    submission_message=""
+    )
+
+assert_equal(type(index(test_state)), Page)
+assert_equal(type(search(test_state)), Page)
+assert_equal(type(result(test_state)), Page)
+assert_equal(type(recommend(test_state)), Page)
+assert_equal(type(about_page(test_state)), Page)
+
+
+
+
