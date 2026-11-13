@@ -98,7 +98,7 @@ def result (state: State)->Page:
     if len(matching_songs) == 0:
         state.result_message = "No matching songs found."
     else:
-       song_picked = random.choice(matching_songs)
+        song_picked = random.choice(matching_songs)
         state.result_message = song_picked.name + " by " + song_picked.artist
     return Page(state, [
         "Your Song Is:",
