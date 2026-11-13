@@ -1,8 +1,20 @@
 from drafter import *
+import random
 from dataclasses import dataclass
 
-hide_debug_information()
 set_website_title("Alternative Archive")
+set_site_information(
+    author="Camila L. Rios",
+    description="Recommends user a song that matches the spcific theme, mood, and genre 
+    they imputed",
+    sources="Drafter Documentation, Past Projects, Gemini (LLM), I also used google, reddit, 
+    and my spotify to help come up with the original song library. Most of these songs are
+    in my playlist, I googled them and based on reddit reviews and what google said I matched
+    attributes to them",
+    planning=["plan.pdf", "design.pdf"],
+    links=["https://github.com/camttrios/Alternative-Archive-Project-"]
+)
+hide_debug_information()
 set_website_framed(False)
 
 @dataclass
