@@ -43,25 +43,54 @@ def index(state: State) -> Page:
         Button("Recommend", "recommend"),
         Button("About", "about_page"),
         ])
+''' 
+This function is the route function that takes the user to the home page of the website
+Parameters:
+state: State
+Returns:
+a page (Home)
+'''
 @route
 def search (state:State)->Page:
     return Page(state,[
         "Find Your Song!",
         "Theme",
-        SelectBox("theme",["Romance","Heartbreak","Rebellion","Isolation", "Self-Discovery", "Death", "Desperation", "Loss", "Redemption","Hopelessness", "Appreciation"]),
+        SelectBox("theme",["Romance","Heartbreak","Rebellion","Isolation", "Self-Discovery", "Death", 
+                           "Desperation", "Loss", "Redemption","Hopelessness", "Appreciation"]),
         "Mood",
         SelectBox("mood", ["Slow", "Upbeat", "Dark", "Angsty","Melancholic"]),
         "Genre",
         SelectBox("genre", [ "Grunge", "Post-Hardcore", "Pop Punk", "Goth", "Shoegaze", "Emotional Hardcore", "Alternative Rock"]),
         Button("Search", "perform_search"),
         ])
-
+''' 
+This function is the route function that takes the user to the search page of the website in which the user can
+select which theme, mood, and genre they want the song they are matched with to have. The Search page has the Search button
+which inplements the perform_search route
+Parameters:
+state: State
+Returns:
+a page (Search)
+'''
 @route
 def perform_search(state: State, theme: str, mood: str, genre: str)->Page:
     state.search_theme = theme
     state.search_mood = mood
     state.search_genre = genre
     return result(state)
+
+'''
+This function is the route function that updates the state's search_theme, search_mood and search_genre parameters
+based on what the user had selected in the Search
+page before hitting the search button
+Parameters:
+state: State
+theme:str
+mood:str
+genre:str
+Returns:
+Page (Result)
+'''
 
 @route
 def result (state: State)->Page:
@@ -80,14 +109,31 @@ def result (state: State)->Page:
         Button("Home", "index"),
         ])
 
-    
+''' 
+The result route is the function that allows the user to see their result and is implemented in perform_search. 
+The function matches the state search_theme, search_mood, and search_genre to songs in the state.library with the same attributes. 
+If no songs are matched the route updates the result_message to "No Mathching songs foud", if there are morethan one match,
+the function will pick a random song from the list of matched songs
+Parameters:
+state:State
+Returns:
+Page
+'''
 
 @route
 def about_page(state:State)-> Page:
     return Page(state, [
-        "Welcome to Alternative Archive! This was made as a project for a University Computer Science class with the purpose of helping other alternative music fans find new music that fit their needs easily! I hope you enjoy!!",
+        "Welcome to Alternative Archive! This was made as a project for a University Computer Science class with the purpose ofhelping other alternative music fans find new music that fit their needs easily! I hope you enjoy!!",
         Button("Home", "index")
         ])
+    
+    ''' 
+This function is the route function that takes the user to the about page of the website
+Parameters:
+state: State
+Returns:
+a page (About)
+'''
 
 @route
 def recommend (state:State)-> Page:
@@ -98,7 +144,8 @@ def recommend (state:State)-> Page:
         "Artist:",
         TextBox("artist"),
         "Theme:",
-        SelectBox("theme",["Romance","Heartbreak","Rebellion","Isolation", "Self-Discovery", "Death","Desperation", "Loss", "Redemption","Hopelessness", "Appreciation"]),
+        SelectBox("theme",["Romance","Heartbreak","Rebellion","Isolation", "Self-Discovery", "Death","Desperation", "Loss", 
+                           "Redemption","Hopelessness", "Appreciation"]),
         "Mood:",
         SelectBox("mood", ["Slow", "Upbeat", "Dark", "Angsty", "Melancholic"]),
         "Genre:",
@@ -106,6 +153,15 @@ def recommend (state:State)-> Page:
         Button("Submit Song", "add_song"),
         Button("Home", "index"),
         ])
+    ''' 
+This function is the route function that takes the user to the recommend page of the website in which the user can
+imput a song by entering its name, artists and selection a theme, mood, and genre for the song.
+Once they hit submit song, the button will implement the add_song route.
+Parameters:
+state: State
+Returns:
+a page (recommend)
+'''
         
 @route
 def add_song (state: State, name: str, artist: str, theme: str, mood: str, genre: str)->Page:
@@ -117,6 +173,20 @@ def add_song (state: State, name: str, artist: str, theme: str, mood: str, genre
         state.submission_message = "Song successfully added to the archive!"
     
     return recommend(state)
+
+'''
+This function is the route function that creates a new Song datalcass and updates its search_theme, search_mood and search_genre parameters
+based on what the user had selected in the recommend page before hitting the Submit song button and appends it to the state's library. 
+Parameters:
+state: State
+name:str
+artist:str
+theme:str
+mood:str
+genre:str
+Returns:
+Page (Recommend)
+'''
 
                    
 initial_songs = [
