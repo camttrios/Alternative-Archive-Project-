@@ -186,7 +186,7 @@ Page (Recommend)
 '''
 
                    
-initial_songs = [
+INITIAL_SONGS = [
     Song("Breed","Nirvana","Rebellion","Angsty", "Grunge"),
     Song("Disintegration", "The Cure","Heartbreak", "Dark","Goth"),
     Song("Tidal Wave: Breakfast, Lunch, and Dinner", "Dance Gavin Dance", "Isolation", "Angsty", "Post-Hardcore"),
