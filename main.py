@@ -1,6 +1,6 @@
 from drafter import *
 import random
-from dataclasses import dataclass\
+from dataclasses import dataclass
 
 INITIAL_SONGS = [
     Song("Breed","Nirvana","Rebellion","Angsty", "Grunge"),
