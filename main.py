@@ -2,6 +2,35 @@ from drafter import *
 import random
 from dataclasses import dataclass
 
+set_website_title("Alternative Archive")
+set_site_information(
+    author="Camila L. Rios",
+    description="Recommends user a song that matches the spcific theme, mood, and genre they imputed",
+    sources="Drafter Documentation, Past Projects, Gemini (LLM), I also used google, chatgpt, reddit, and my spotify to help come up with the original song library. Most of these songs arein my playlist, I googled them and based on reddit reviews and what google said I matchedattributes to them",
+    planning=["plan.pdf", "design.pdf"],
+    links=["https://github.com/camttrios/Alternative-Archive-Project-"]
+)
+ hide_debug_information()
+set_website_framed(False)
+
+@dataclass
+class Song:
+    name: str
+    artist:str
+    theme:str
+    mood: str
+    genre: str
+    
+
+@dataclass
+class State:
+    library: list[Song]
+    search_theme: str
+    search_mood:str
+    search_genre:str
+    result_message:str
+    submission_message:str   
+
 INITIAL_SONGS = [
     Song("Breed","Nirvana","Rebellion","Angsty", "Grunge"),
     Song("Disintegration", "The Cure","Heartbreak", "Dark","Goth"),
@@ -119,35 +148,7 @@ INITIAL_SONGS = [
     
 ]
 
-set_website_title("Alternative Archive")
-set_site_information(
-    author="Camila L. Rios",
-    description="Recommends user a song that matches the spcific theme, mood, and genre they imputed",
-    sources="Drafter Documentation, Past Projects, Gemini (LLM), I also used google, chatgpt, reddit, and my spotify to help come up with the original song library. Most of these songs arein my playlist, I googled them and based on reddit reviews and what google said I matchedattributes to them",
-    planning=["plan.pdf", "design.pdf"],
-    links=["https://github.com/camttrios/Alternative-Archive-Project-"]
-)
-hide_debug_information()
-set_website_framed(False)
 
-@dataclass
-class Song:
-    name: str
-    artist:str
-    theme:str
-    mood: str
-    genre: str
-    
-
-@dataclass
-class State:
-    library: list[Song]
-    search_theme: str
-    search_mood:str
-    search_genre:str
-    result_message:str
-    submission_message:str
-    
     
 @route
 def index(state: State) -> Page:
