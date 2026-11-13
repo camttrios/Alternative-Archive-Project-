@@ -297,7 +297,8 @@ initial_songs = [
     Song("Tonight, Tonight", "The Smashing Pumpkins","Redemption","Upbeat","Alternative Rock"),
     Song("Digital Bath", "Deftones","Death","Dark","Alternative Rock"),
     Song("Trying to Escape the Inevitable", "Pencey Prep","Hopelessness","Angsty","Post-Hardcore"),
-    Song("The Concept", "Teenage Fanclub","Heartbreak","Upbeat","Alternative Rock")
+    Song("The Concept", "Teenage Fanclub","Heartbreak","Upbeat","Alternative Rock"),
+    Song("Gekka no Yasoukyoku", "Malice Mizer", "Death", "Upbeat", "Goth")
     
     
 ]
