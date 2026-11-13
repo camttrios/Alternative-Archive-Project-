@@ -388,21 +388,81 @@ assert_equal(test_state.submission_message,
              "Please fill in all required fields.")
 
 #unit testing pages 
+#testing Index
+test_page = index(initial_state)
+
+assert_equal(type(test_page), Page)
+assert_equal(test_page.content[0], "Welcome to Alternative Archive!")
+assert_equal(test_page.content[1], Button("Search", "search"))
+assert_equal(test_page.content[2], Button("Recommend", "recommend"))
+assert_equal(test_page.content[3], Button("About", "about_page"))
+
+#testing search
+test_page = search(initial_state)
+
+assert_equal(type(test_page), Page)
+assert_equal(test_page.content[0], "Find Your Song!")
+assert_equal(test_page.content[1], "Theme")
+assert_equal(test_page.content[3], "Mood")
+assert_equal(test_page.content[5], "Genre")
+assert_equal(test_page.content[7], Button("Search", "perform_search"))
+
+#testing recommend
+test_page = recommend(initial_state)
+
+assert_equal(type(test_page), Page)
+assert_equal(test_page.content[1], "Name:")
+assert_equal(test_page.content[2], TextBox("name"))
+assert_equal(test_page.content[3], "Artist:")
+assert_equal(test_page.content[4], TextBox("artist"))
+assert_equal(test_page.content[5], "Theme:")
+assert_equal(test_page.content[7], "Mood:")
+assert_equal(test_page.content[9], "Genre:")
+assert_equal(test_page.content[11], Button("Submit Song", "add_song"))
+assert_equal(test_page.content[12], Button("Home", "index"))
+
+#testing about 
+test_page = about_page(initial_state)
+
+assert_equal(type(test_page), Page)
+assert_equal(
+    test_page.content[0],
+    "Welcome to Alternative Archive! This was made as a project for a University Computer Science class with the purpose of helping other alternative music fans find new music that fit their needs easily! I hope you enjoy!!"
+)
+assert_equal(test_page.content[1], Button("Home", "index"))
+
+#testing result
+
 test_state = State(
-    library = [],
-    search_theme="",
-    search_mood="",
-    search_genre="",
-    result_message="Find Your Song!",
+    library=[],
+    search_theme="Redemption",
+    search_mood="Dark",
+    search_genre="Goth",
+    result_message="",
     submission_message=""
-    )
+)
 
-assert_equal(type(index(test_state)), Page)
-assert_equal(type(search(test_state)), Page)
-assert_equal(type(result(test_state)), Page)
-assert_equal(type(recommend(test_state)), Page)
-assert_equal(type(about_page(test_state)), Page)
+test_page = result(test_state)
 
+assert_equal(test_page.content[0], "Your Song Is:")
+assert_equal(test_page.content[1], "No matching songs found.")
 
+test_state = State(
+    library=[
+        Song("The Phoenix", "Fall Out Boy",
+             "Rebellion", "Upbeat", "Pop Punk")
+    ],
+    search_theme="Rebellion",
+    search_mood="Upbeat",
+    search_genre="Pop Punk",
+    result_message="",
+    submission_message=""
+)
 
+test_page = result(test_state)
+
+assert_equal(type(test_page), Page)
+assert_equal(test_page.content[0], "Your Song Is:")
+assert_equal(test_page.content[1], "The Phoenix by Fall Out Boy")
+assert_equal(test_page.content[2], Button("Home", "index"))
 
