@@ -10,7 +10,7 @@ set_site_information(
     planning=["plan.pdf", "design.pdf"],
     links=["https://github.com/camttrios/Alternative-Archive-Project-"]
 )
- hide_debug_information()
+hide_debug_information()
 set_website_framed(False)
 
 @dataclass
