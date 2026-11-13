@@ -120,7 +120,7 @@ Page
 @route
 def about_page(state:State)-> Page:
     return Page(state, [
-        "Welcome to Alternative Archive! This was made as a project for a University Computer Science class with the purpose ofhelping other alternative music fans find new music that fit their needs easily! I hope you enjoy!!",
+        "Welcome to Alternative Archive! This was made as a project for a University Computer Science class with the purpose of helping other alternative music fans find new music that fit their needs easily! I hope you enjoy!!",
         Button("Home", "index")
         ])
     
